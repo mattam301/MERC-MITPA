@@ -10,7 +10,7 @@ MERC-MITPA is a deep learning framework that leverages graph-based and multimoda
 ---
 
 ## Framework Architecture
-![Framework Overview](fig.model.pdf)
+![Framework Overview](fig.model.png)
 
 ---
 
