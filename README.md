@@ -10,7 +10,7 @@ MERC-MITPA is a deep learning framework that leverages graph-based and multimoda
 ---
 
 ## Framework Architecture
-![Framework Overview](path_to_framework_image.png)
+![Framework Overview](fig.model.pdf)
 
 ---
 
@@ -54,12 +54,19 @@ This script computes metrics on the test set.
 This is the results on IEMOCAP(4-way) dataset
 
 ```latex
+\documentclass{article}
+\usepackage{booktabs} % For better table formatting
+\usepackage{graphicx} % If you need images
+\begin{document}
+
 \begin{table*}[h]
     \centering
-    \begin{tabular}{|l|c|c|c|c|c|c|c|c|c|}
-        \hline
+    \renewcommand{\arraystretch}{1.2} % Adjust row spacing
+    \setlength{\tabcolsep}{5pt} % Adjust column spacing
+    \begin{tabular}{lccccccccc}
+        \toprule
         \textbf{Method} & \textbf{Happy} & \textbf{Sad} & \textbf{Neutral} & \textbf{Angry} & \textbf{Excited} & \textbf{Frustrated} & \textbf{w-F1 (\%)} & \textbf{Acc. (\%)} & \textbf{Std dev} \\
-        \hline
+        \midrule
         bc-LSTM [19] & 32.63 & 70.34 & 51.14 & 63.44 & 67.91 & 61.06 & 59.10 & 59.58 & 11.85 \\
         CMN [20] & 30.38 & 62.41 & 52.39 & 59.83 & 60.25 & 60.69 & 56.13 & 56.56 & 10.38 \\
         ICON [21] & 29.91 & 64.57 & 57.38 & 63.04 & 63.42 & 60.81 & 58.54 & 59.09 & 11.28 \\
@@ -74,11 +81,13 @@ This is the results on IEMOCAP(4-way) dataset
         COGMEN [8] & 55.76 & 80.17 & 63.21 & 61.69 & 74.91 & 63.90 & 67.27 & 67.04 & 7.69 \\
         CORECT [9] & 59.30 & 80.53 & 66.94 & 69.59 & 72.69 & \textbf{68.50} & 70.02 & 69.93 & 5.90 \\
         \textbf{MI-TPA (Ours)} & \textbf{62.69} & 77.59 & 67.17 & \textbf{71.04} & \textbf{77.52} & 66.04 & \textbf{70.39} & \textbf{70.36} & \textbf{5.23} \\
-        \hline
+        \bottomrule
     \end{tabular}
     \caption{Comparison of MERC-MITPA with existing methods on emotion recognition.}
     \label{tab:results}
 \end{table*}
+
+\end{document}
 ```
 
 ---
