@@ -68,7 +68,6 @@ if __name__ == "__main__":
     parser.add_argument(
         "--dataset",
         type=str,
-        # required=True,
         default="meld",
         choices=["iemocap", "iemocap_4","iemocap_gc","iemocap_roberta","mosei", "meld"],
         help="Dataset name.",

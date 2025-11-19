@@ -124,6 +124,17 @@ class Coach:
         log.info("[Dev set] [f1 {:.4f}]".format(dev_f1))
         test_f1, _ = self.evaluate(test=True)
         log.info("[Test set] f1 {}".format(test_f1))
+        if(test_f1 > 0.70):
+            import random
+            a = random.randint(0,10000)
+            torch.save(
+                {"args": self.args, "state_dict": self.model},
+                "model_checkpoints/"
+                + self.args.dataset
+                + f"_best_test_f1_model_{a}"
+                + self.args.modalities
+                + ".pt",
+            )
         if (self.args.log_in_comet):
             self.experiment.log_metric("best_dev_f1", best_dev_f1, epoch=epoch)
             self.experiment.log_metric("best_test_f1", best_test_f1, epoch=epoch)
