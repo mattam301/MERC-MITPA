@@ -280,7 +280,10 @@ if __name__ == "__main__":
         default=18,
         help="The number of random walk steps"
     )
-
+    parser.add_argument(
+        "--num_MMT_layers",
+        type=int, default=2, help="number of MMT layers"
+    )
 
     parser.add_argument("--tag", type=str, default="normalexperiment")
 

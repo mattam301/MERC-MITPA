@@ -86,9 +86,18 @@ class MITPA(nn.Module):
             print('RTGraph --> Use GNN')
 
         if args.use_mmt and self.n_modals > 1:
-            # self.crossmodal = CrossmodalNet(g_dim, args)
-            self.crossmodal = MMTLayer(input_dim=[100,100,100], rank = 50, n_modals=3, beta=0.7)
             print('--> Use MMT')
+
+            # Create multiple MMT layers
+            self.crossmodal = nn.ModuleList([
+                MMTLayer(
+                    input_dim=[100,100,100],      # e.g. [100, 100, 100]
+                    rank=50,                # e.g. 50
+                    n_modals=3,           # e.g. 3
+                    beta=0.7                # e.g. 0.7
+                )
+                for _ in range(args.num_MMT_layers)
+            ])
         elif self.n_modals == 1:
             print('RTGraph --> Crossmodal not available when number of modalitiy is 1')
 
