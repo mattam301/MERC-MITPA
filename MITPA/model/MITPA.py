@@ -144,7 +144,10 @@ class MITPA(nn.Module):
 
 
         if self.args.use_mmt and self.n_modals > 1:
-            out_cr = self.crossmodal(multimodal_features)
+            for layer in self.crossmodal:
+                multimodal_features = layer(multimodal_features)
+            out_cr = multimodal_features
+            
             # print((out_cr[2].shape))
             out_cr = torch.cat(out_cr, dim=2)
             # print(out_cr.shape)
