@@ -33,12 +33,14 @@ def main(args):
 
     trainset = MITPA.Dataset(data["train"], args)
     print("Inspecting training set statistics...")
-    trainset.print_statistics()
+    # trainset.print_statistics()
     trainset.print_statistics(window_size=10)
     devset = MITPA.Dataset(data["dev"], args)
+    print("Inspecting dev set statistics...")
+    devset.print_statistics(window_size=10)
     testset = MITPA.Dataset(data["test"], args)
     print("Inspecting testing set statistics...")
-    testset.print_statistics()
+    # testset.print_statistics()
     testset.print_statistics(window_size=10)
 
     log.debug("Building model...")
