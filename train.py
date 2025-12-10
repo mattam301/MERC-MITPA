@@ -31,17 +31,35 @@ def main(args):
     
     log.info("Loaded data.")
 
-    trainset = MITPA.Dataset(data["train"], args)
-    print("Inspecting training set statistics...")
-    # trainset.print_statistics()
-    trainset.print_statistics(window_size=10)
-    devset = MITPA.Dataset(data["dev"], args)
-    print("Inspecting dev set statistics...")
-    devset.print_statistics(window_size=10)
-    testset = MITPA.Dataset(data["test"], args)
-    print("Inspecting testing set statistics...")
-    # testset.print_statistics()
-    testset.print_statistics(window_size=10)
+    if args.dataset != "iemocap_gs":
+        trainset = MITPA.Dataset(data["train"], args)
+        print("Inspecting training set statistics...")
+        # trainset.print_statistics()
+        # trainset.print_statistics(window_size=10)
+        devset = MITPA.Dataset(data["dev"], args)
+        # print("Inspecting dev set statistics...")
+        # devset.print_statistics(window_size=10)
+        testset = MITPA.Dataset(data["test"], args)
+        # print("Inspecting testing set statistics...")
+        # testset.print_statistics()
+        # testset.print_statistics(window_size=10)
+    else:
+        # by default, iemocap_gs doesn't have dev set
+        import random
+
+        # Shuffle and split
+        random.seed(42)  # for reproducibility
+        all_train_samples = data["train"]
+        random.shuffle(all_train_samples)
+
+        split_idx = int(len(all_train_samples) * 0.9)
+        new_train_samples = all_train_samples[:split_idx]
+        dev_samples = all_train_samples[split_idx:]
+
+        # Now create datasets
+        trainset = MITPA.Dataset(new_train_samples, args)
+        devset = MITPA.Dataset(dev_samples, args)
+        testset = MITPA.Dataset(data["test"], args)
 
     log.debug("Building model...")
     
