@@ -34,6 +34,17 @@ class Classifier(nn.Module):
                         1 / 0.252668,
                     ]
                 ).to(args.device)
+            if args.dataset == "iemocap_gs":
+                self.loss_weights = torch.tensor(
+                    [
+                        1 / 0.086747,
+                        1 / 0.144406,
+                        1 / 0.227883,
+                        1 / 0.160585,
+                        1 / 0.127711,
+                        1 / 0.252668,
+                    ]
+                ).to(args.device)
             elif args.dataset == "iemocap_4":
                 self.loss_weights = torch.tensor(
                     [

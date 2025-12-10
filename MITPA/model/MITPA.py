@@ -57,6 +57,7 @@ class MITPA(nn.Module):
 
         dataset_speaker_dict = {
             "iemocap": 2,
+            "iemocap_gs": 2,
             "iemocap_roberta": 2,
             "iemocap_4": 2,
             "mosei":1,
@@ -92,7 +93,7 @@ class MITPA(nn.Module):
             # Create multiple MMT layers
             self.crossmodal = nn.ModuleList([
                 MMTLayer(
-                    input_dim=[100,100,100],      # e.g. [100, 100, 100]
+                    input_dim=[768,768,768],      # e.g. [100, 100, 100]
                     rank=50,                # e.g. 50
                     n_modals=3,           # e.g. 3
                     beta=0.7                # e.g. 0.7

@@ -354,7 +354,7 @@ if __name__ == "__main__":
     if args.log_in_comet:
         experiment = MITPA.Logger(
                 api_key=args.comet_api_key,
-                project_name="nckh",
+                project_name="mitpa",
                 workspace=args.comet_workspace,
                 auto_param_logging=False,
                 auto_metric_logging=False,

@@ -57,6 +57,7 @@ class CORECT_real(nn.Module):
 
         dataset_speaker_dict = {
             "iemocap": 2,
+            "iemocap_gs": 2,
             "iemocap_roberta": 2,
             "iemocap_4": 2,
             "mosei":1,
