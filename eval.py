@@ -33,6 +33,7 @@ def main(args):
     model = model_dict["state_dict"]
     dataset_label_dict = {
             "iemocap": ["hap", "sad", "neu", "ang", "exc", "fru"],
+            "iemocap_gs": ["hap", "sad", "neu", "ang", "exc", "fru"],
             "iemocap_4": ["hap", "sad", "neu", "ang"],
             "mosei": ["Negative", "Positive"],
         }
